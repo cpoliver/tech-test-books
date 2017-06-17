@@ -1,5 +1,4 @@
 import Chance from 'chance';
-
 import titleParts from './titleParts.json';
 
 const random = new Chance();
