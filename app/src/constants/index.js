@@ -10,3 +10,9 @@ export const GENRE = {
   ROMANCE: 'romance',
   SCI_FI: 'sci-fi'
 };
+
+export const GENDER = {
+  FEMALE: 'female',
+  MALE: 'male',
+  NON_BINARY: 'non-binary'
+};
