@@ -8,13 +8,14 @@ const random = new Chance();
 const { FEMALE, MALE, NON_BINARY } = GENDER;
 
 const firstNames = {
-  [FEMALE]: maleNames,
-  [MALE]: femaleNames,
+  [FEMALE]: femaleNames,
+  [MALE]: maleNames,
   [NON_BINARY]: random.pickone([femaleNames, maleNames])
 };
 
-const generateAuthorName = (gender) => {
-  return `${random.pickone(surnames)}, ${random.pickone(firstNames[gender])}`;
-};
+const generateAuthorName = (gender) => ({
+  firstName: random.pickone(firstNames[gender]),
+  surname: random.pickone(surnames)
+});
 
 export { generateAuthorName };
