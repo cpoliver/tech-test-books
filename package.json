@@ -22,6 +22,7 @@
     ]
   },
   "eslintConfig": {
+    "parser": "babel-eslint",
     "extends": [
       "casumo/configurations/es6"
     ],
