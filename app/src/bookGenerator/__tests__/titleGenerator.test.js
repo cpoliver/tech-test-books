@@ -1,6 +1,7 @@
 import Chance from 'chance';
-import { describe, it } from 'mocha';
+import { afterEach, beforeEach, describe, it } from 'mocha';
 import { expect } from 'chai';
+import { spy } from 'sinon';
 import { head } from 'ramda';
 
 import { GENRE } from '../../constants';
@@ -19,9 +20,15 @@ const {
   SCI_FI
 } = GENRE;
 
-Chance.prototype.pickone = (arr) => head(arr);
-
 describe('title generator', () => {
+  beforeEach(() => {
+    Chance.prototype.pickone = spy(head);
+  });
+
+  afterEach(() => {
+    Chance.prototype.pickone.reset();
+  });
+
   it('should be able to generate adventure titles', () => {
     expect(generateTitle(ADVENTURE)).to.equal('agent of darkness');
   });

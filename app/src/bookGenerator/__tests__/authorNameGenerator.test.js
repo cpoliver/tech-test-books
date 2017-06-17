@@ -1,6 +1,7 @@
 import Chance from 'chance';
-import { describe, it } from 'mocha';
+import { afterEach, beforeEach, describe, it } from 'mocha';
 import { expect } from 'chai';
+import { spy } from 'sinon';
 import { head } from 'ramda';
 
 import { GENDER } from '../../constants';
@@ -8,9 +9,15 @@ import { generateAuthorName } from '../authorNameGenerator';
 
 const { FEMALE, MALE, NON_BINARY } = GENDER;
 
-Chance.prototype.pickone = (arr) => head(arr);
-
 describe('author name generator', () => {
+  beforeEach(() => {
+    Chance.prototype.pickone = spy(head);
+  });
+
+  afterEach(() => {
+    Chance.prototype.pickone.reset();
+  });
+
   it('should be able to generate female names', () => {
     expect(generateAuthorName(FEMALE)).to.deep.equal({
       firstName: 'Sophia',
