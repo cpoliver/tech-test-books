@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "generate and serve random, real-sounding book data",
   "main": "index.js",
-  "repository": "https://github.com/cpoliver/tech-test-shopping-cart.git",
+  "repository": "https://github.com/cpoliver/tech-test-books.git",
   "author": "Charles P. Oliver <cpoliver@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/babel app --out-dir dist --ignore test.js",
     "start": "node ./dist/index.js",
     "dev": "babel-node ./app/index.js",
-    "test": "mocha --require babel-polyfill --compilers js:babel-register app/**/*.test.js",
-    "test:watch": "mocha --require babel-polyfill --compilers js:babel-register app/**/*.test.js --watch",
+    "test": "mocha --require babel-polyfill --compilers js:babel-register 'app/**/*.test.js'",
+    "test:watch": "mocha --require babel-polyfill --compilers js:babel-register 'app/**/*.test.js' --watch",
     "lint": "./node_modules/.bin/eslint .",
     "precommit": "lint-staged"
   },
