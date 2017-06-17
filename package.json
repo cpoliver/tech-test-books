@@ -12,17 +12,29 @@
     "dev": "babel-node ./app/index.js",
     "test": "mocha --require babel-polyfill --compilers js:babel-register app/**/*.test.js",
     "test:watch": "mocha --require babel-polyfill --compilers js:babel-register app/**/*.test.js --watch",
-    "lint": "./node_modules/.bin/eslint ."
+    "lint": "./node_modules/.bin/eslint .",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": [
       "casumo/configurations/es6"
     ],
     "rules": {
-      "indent": ["error", 2]
+      "indent": [
+        "error",
+        2
+      ]
     }
   },
   "dependencies": {
+    "husky": "^0.13.4",
+    "lint-staged": "^3.6.1",
     "restify": "^4.3.0"
   },
   "devDependencies": {
