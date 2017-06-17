@@ -1,0 +1,30 @@
+{
+  "name": "tech-test-books",
+  "version": "1.0.0",
+  "description": "generate and serve random, real-sounding book data",
+  "main": "index.js",
+  "repository": "https://github.com/cpoliver/tech-test-shopping-cart.git",
+  "author": "Charles P. Oliver <cpoliver@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/babel app --out-dir dist --ignore test.js",
+    "start": "node ./dist/index.js",
+    "dev": "babel-node ./app/index.js",
+    "test": "mocha --require babel-polyfill --compilers js:babel-register app/test/**/*.test.js",
+    "test:watch": "mocha --require babel-polyfill --compilers js:babel-register app/test/**/*.test.js --watch"
+  },
+  "dependencies": {
+    "cli-table": "^0.3.1",
+    "restify": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0",
+    "sinon": "^2.1.0",
+    "supertest": "^3.0.0"
+  }
+}
