@@ -2,7 +2,7 @@
 import request from 'supertest';
 import { describe, it } from 'mocha';
 
-import server from '../src/server';
+import server from '../../src/server';
 
 const onEnd = (error, done) => {
   if (error) {

@@ -3,8 +3,8 @@ import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { head } from 'ramda';
 
-import { GENDER } from '../constants';
-import { generateAuthorName } from './authorNameGenerator';
+import { GENDER } from '../../constants';
+import { generateAuthorName } from '../authorNameGenerator';
 
 const { FEMALE, MALE, NON_BINARY } = GENDER;
 

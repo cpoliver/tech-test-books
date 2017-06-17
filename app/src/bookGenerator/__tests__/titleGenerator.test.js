@@ -3,8 +3,8 @@ import { describe, it } from 'mocha';
 import { expect } from 'chai';
 import { head } from 'ramda';
 
-import { GENRE } from '../constants';
-import { generateTitle } from './titleGenerator';
+import { GENRE } from '../../constants';
+import { generateTitle } from '../titleGenerator';
 
 const {
   ADVENTURE,
