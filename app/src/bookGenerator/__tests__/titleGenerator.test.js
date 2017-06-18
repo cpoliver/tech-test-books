@@ -30,42 +30,42 @@ describe('title generator', () => {
   });
 
   it('should be able to generate adventure titles', () => {
-    expect(generateTitle(ADVENTURE)).to.equal('agent of darkness');
+    expect(generateTitle(ADVENTURE)).to.equal('Agent of Darkness');
   });
 
   it('should be able to generate children titles', () => {
-    expect(generateTitle(CHILDREN)).to.equal('baby in my house');
+    expect(generateTitle(CHILDREN)).to.equal('Baby in My House');
   });
 
   it('should be able to generate drama titles', () => {
-    expect(generateTitle(DRAMA)).to.equal('accomplice dressed in black');
+    expect(generateTitle(DRAMA)).to.equal('Accomplice Dressed in Black');
   });
 
   it('should be able to generate fantasy titles', () => {
-    expect(generateTitle(FANTASY)).to.equal('imp of autumn');
+    expect(generateTitle(FANTASY)).to.equal('Imp of Autumn');
   });
 
   it('should be able to generate horror titles', () => {
-    expect(generateTitle(HORROR)).to.equal('angel at the catacombs');
+    expect(generateTitle(HORROR)).to.equal('Angel at the Catacombs');
   });
 
   it('should be able to generate humor titles', () => {
-    expect(generateTitle(HUMOR)).to.equal('agent of jokes');
+    expect(generateTitle(HUMOR)).to.equal('Agent of Jokes');
   });
 
   it('should be able to generate mystery titles', () => {
-    expect(generateTitle(MYSTERY)).to.equal('agent from beyond the grave');
+    expect(generateTitle(MYSTERY)).to.equal('Agent from Beyond the Grave');
   });
 
   it('should be able to generate non-fiction titles', () => {
-    expect(generateTitle(NON_FICTION)).to.equal('horses around the world');
+    expect(generateTitle(NON_FICTION)).to.equal('Horses Around the World');
   });
 
   it('should be able to generate romance titles', () => {
-    expect(generateTitle(ROMANCE)).to.equal('admirer at my school');
+    expect(generateTitle(ROMANCE)).to.equal('Admirer at My School');
   });
 
   it('should be able to generate sci-fi titles', () => {
-    expect(generateTitle(SCI_FI)).to.equal('agent of the sun');
+    expect(generateTitle(SCI_FI)).to.equal('Agent of the Sun');
   });
 });

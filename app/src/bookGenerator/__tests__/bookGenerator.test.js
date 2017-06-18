@@ -30,7 +30,7 @@ describe('book generator', () => {
     });
 
     it('should have a title for the correct genre', () => {
-      expect(generatePresetBook().title).to.equal('imp of autumn');
+      expect(generatePresetBook().title).to.equal('Imp of Autumn');
     });
 
     describe('the author', () => {
@@ -48,7 +48,7 @@ describe('book generator', () => {
     });
 
     it('should have a publish date', () => {
-      expect(generatePresetBook().publishedOn.toUTCString()).to.equal('Sun, 14 Apr 1991 22:00:00 GMT');
+      expect(generatePresetBook().publishedOn).to.equal('1991-04-14');
     });
   });
 });

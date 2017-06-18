@@ -1,4 +1,6 @@
 import Chance from 'chance';
+import toTitleCase from 'to-title-case';
+
 import titleParts from './titleParts.json';
 
 const random = new Chance();
@@ -14,7 +16,7 @@ const generateTitle = (genre) => {
     `${random.pickone(part5)} ${random.pickone(part6)}`
   ];
 
-  return random.pickone(titles);
+  return toTitleCase(random.pickone(titles));
 };
 
 export { generateTitle };
