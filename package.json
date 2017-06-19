@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "chance": "^1.0.9",
+    "nedb": "^1.8.0",
     "ramda": "^0.24.1",
     "restify": "^4.3.0",
     "to-title-case": "^1.0.0"
