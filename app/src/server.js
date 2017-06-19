@@ -24,11 +24,12 @@ const parseParams = ({ params }) => {
 };
 
 export const createServer = (db) => {
-  const app = restify.createServer();
+  const server = restify.createServer();
 
-  app.use(restify.queryParser());
+  server.use(restify.queryParser());
+  server.use(restify.CORS({ origins: ['http://localhost:3000'] })); // eslint-disable-line new-cap
 
-  app.get('/books', (request, response) => {
+  server.get('/books', (request, response) => {
     const { itemsPerPage, page, filter, sort } = parseParams(request);
     const skip = (page - 1) * itemsPerPage;
 
@@ -45,7 +46,7 @@ export const createServer = (db) => {
       });
   });
 
-  app.get('/books/count', (request, response) => {
+  server.get('/books/count', (request, response) => {
     const { filter = DEFAULT_FILTER } = request.params;
 
     db.count(JSON.parse(filter), (error, count) => {
@@ -57,7 +58,7 @@ export const createServer = (db) => {
     });
   });
 
-  app.post('/admin/add-books/:count', (request, response) => {
+  server.post('/admin/add-books/:count', (request, response) => {
     const { count } = request.params;
     const books = [];
 
@@ -74,7 +75,7 @@ export const createServer = (db) => {
     });
   });
 
-  app.del('/admin/delete-all-books', (request, response) => {
+  server.del('/admin/delete-all-books', (request, response) => {
     db.remove({}, { multi: true }, (error, count) => {
       if (error) {
         response.send(500);
@@ -84,5 +85,5 @@ export const createServer = (db) => {
     });
   });
 
-  return app;
+  return server;
 };
