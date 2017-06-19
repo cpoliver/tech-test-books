@@ -15,6 +15,18 @@ const errorFn = () => {
   throw new Error('forced error');
 };
 
+const matchingItemsCount = pipe(
+  prop('books'),
+  intersection(books),
+  length
+);
+
+const getTitles = pipe(
+  prop('books'),
+  pluck('title'),
+  join(',')
+);
+
 describe('the server', () => {
   beforeEach(() => {
     db = createDb({ inMemoryOnly: true });
@@ -26,13 +38,7 @@ describe('the server', () => {
     it('returns 10 books by default', (done) => {
       request(server)
         .get('/books')
-        .expect((response) => expect(
-          pipe(
-            prop('books'),
-            intersection(books),
-            length
-          )(response.body)).to.equal(10)
-        )
+        .expect((response) => expect(matchingItemsCount(response.body)).to.equal(10))
         .expect(200, done);
     });
 
@@ -43,13 +49,7 @@ describe('the server', () => {
 
       request(server)
         .get(`/books?itemsPerPage=${count}&page=${page}`)
-        .expect((response) => expect(
-          pipe(
-            prop('books'),
-            intersection(books),
-            length
-          )(response.body)).to.equal(expected)
-        )
+        .expect((response) => expect(matchingItemsCount(response.body)).to.equal(expected))
         .expect(200, done);
     });
 
@@ -84,13 +84,7 @@ describe('the server', () => {
 
       request(server)
         .get(`/books?filter=${filter}`)
-        .expect((response) => expect(
-          pipe(
-            prop('books'),
-            intersection(books),
-            length
-          )(response.body)).to.equal(3)
-        )
+        .expect((response) => expect(matchingItemsCount(response.body)).to.equal(3))
         .expect(200, done);
     });
 
@@ -111,12 +105,7 @@ describe('the server', () => {
 
       request(server)
         .get(`/books?sort=${sort}&page=1&itemsPerPage=3`)
-        .expect((response) => expect(
-          pipe(
-            prop('books'),
-            pluck('title'),
-            join(',')
-          )(response.body)).to.equal(expected)
+        .expect((response) => expect(getTitles(response.body)).to.equal(expected)
         )
         .expect(200, done);
     });
@@ -145,13 +134,7 @@ describe('the server', () => {
 
     request(server)
       .get(`/books?itemsPerPage=${count}&page=${page}&sort=${sort}`)
-      .expect((response) => expect(
-        pipe(
-          prop('books'),
-          intersection(books),
-          length
-        )(response.body)).to.equal(expected)
-      )
+      .expect((response) => expect(matchingItemsCount(response.body)).to.equal(expected))
       .expect(200, done);
   });
 
@@ -202,9 +185,6 @@ describe('the server', () => {
     it('deletes all the books', (done) => {
       request(server)
         .del('/admin/delete-all-books')
-        .expect(() => db.count({}, (error, actualCount) => {
-          expect(actualCount).to.equal(0);
-        }))
         .expect(200, { message: 'database cleared: deleted 11 books' }, done);
     });
 
