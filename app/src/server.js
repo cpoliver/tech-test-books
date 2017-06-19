@@ -5,7 +5,7 @@ import { generateBook } from './bookGenerator';
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE = 1;
 const DEFAULT_FILTER = JSON.stringify({});
-const DEFAULT_SORT = JSON.stringify({});
+const DEFAULT_SORT = JSON.stringify({ title: 1 });
 
 const createServer = (db) => {
   const app = restify.createServer();
@@ -24,8 +24,8 @@ const createServer = (db) => {
 
     db.find(JSON.parse(filter))
       .sort(JSON.parse(sort))
-      .skip(skip)
-      .limit(itemsPerPage)
+      .skip(parseInt(skip, 10))
+      .limit(parseInt(itemsPerPage, 10))
       .exec((error, books) => {
         if (error) {
           response.send(500);

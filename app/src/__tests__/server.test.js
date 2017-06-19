@@ -136,6 +136,25 @@ describe('the server', () => {
     });
   });
 
+  it('handles sorting and pagination simultaneously', (done) => {
+    const count = 2;
+    const page = 2;
+    const expected = 2;
+
+    const sort = JSON.stringify({ title: 1 });
+
+    request(server)
+      .get(`/books?itemsPerPage=${count}&page=${page}&sort=${sort}`)
+      .expect((response) => expect(
+        pipe(
+          prop('books'),
+          intersection(books),
+          length
+        )(response.body)).to.equal(expected)
+      )
+      .expect(200, done);
+  });
+
   describe('/books/count', () => {
     it('returns the total number of books in the db', (done) => {
       request(server)
