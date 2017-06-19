@@ -1,6 +1,6 @@
 import restify from 'restify';
 
-import { generateBook } from './bookGenerator';
+import { generateBook } from './data/generator';
 
 const DEFAULT_ITEMS_PER_PAGE = 10;
 const DEFAULT_PAGE = 1;

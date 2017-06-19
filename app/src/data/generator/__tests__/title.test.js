@@ -4,8 +4,8 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import { head } from 'ramda';
 
-import { GENRE } from '../../constants';
-import { generateTitle } from '../titleGenerator';
+import { GENRE } from '../../../constants';
+import { generateTitle } from '../title';
 
 const {
   ADVENTURE,

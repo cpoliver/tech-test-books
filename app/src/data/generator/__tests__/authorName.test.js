@@ -4,14 +4,15 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import { head } from 'ramda';
 
-import { GENDER } from '../../constants';
-import { generateAuthorName } from '../authorNameGenerator';
+import { GENDER } from '../../../constants';
+import { generateAuthorName } from '../authorName';
 
 const { FEMALE, MALE, NON_BINARY } = GENDER;
 
 describe('author name generator', () => {
   beforeEach(() => {
     Chance.prototype.pickone = spy(head);
+    Chance.prototype.weighted = spy(head);
   });
 
   afterEach(() => {

@@ -1,8 +1,8 @@
 import Chance from 'chance';
 
-import { GENDER, GENRE } from '../constants';
-import { generateAuthorName } from './authorNameGenerator';
-import { generateTitle } from './titleGenerator';
+import { GENDER, GENRE } from '../../constants';
+import { generateAuthorName } from './authorName';
+import { generateTitle } from './title';
 
 const PUBLISHED_FROM = 1942;
 const PUBLISHED_UNTIL = 2017;
@@ -17,7 +17,7 @@ const generateDate = () => random.birthday({
   year: random.year({ min: PUBLISHED_FROM, max: PUBLISHED_UNTIL })
 });
 
-const generateBook = (overrides = {}) => {
+export const generateBook = (overrides = {}) => {
   const {
     authorGender = weightedFromObject(GENDER, [50, 50, 1]),
     genre = pickoneFromObject(GENRE)
@@ -33,5 +33,3 @@ const generateBook = (overrides = {}) => {
     publishedOn: formatDate(generateDate())
   };
 };
-
-export { generateBook };

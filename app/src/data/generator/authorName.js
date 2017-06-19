@@ -1,7 +1,7 @@
 import Chance from 'chance';
 import { femaleNames, maleNames, surnames } from './authorNames.json';
 
-import { GENDER } from '../constants';
+import { GENDER } from '../../constants';
 
 const random = new Chance();
 
@@ -13,9 +13,7 @@ const firstNames = {
   [NON_BINARY]: random.pickone([femaleNames, maleNames])
 };
 
-const generateAuthorName = (gender) => ({
+export const generateAuthorName = (gender) => ({
   firstName: random.pickone(firstNames[gender]),
   surname: random.pickone(surnames)
 });
-
-export { generateAuthorName };

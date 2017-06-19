@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import { spy } from 'sinon';
 import { head } from 'ramda';
 
-import { GENDER, GENRE } from '../../constants';
+import { GENDER, GENRE } from '../../../constants';
 import { generateBook } from '../';
 
 const generatePresetBook = () => generateBook({

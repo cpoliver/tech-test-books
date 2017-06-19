@@ -5,7 +5,7 @@ import titleParts from './titleParts.json';
 
 const random = new Chance();
 
-const generateTitle = (genre) => {
+export const generateTitle = (genre) => {
   const [part1, part2, part3, part4, part5, part6, part7] = titleParts[genre];
 
   const titles = [
@@ -18,5 +18,3 @@ const generateTitle = (genre) => {
 
   return toTitleCase(random.pickone(titles));
 };
-
-export { generateTitle };
