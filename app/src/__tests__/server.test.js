@@ -142,6 +142,17 @@ describe('the server', () => {
         .get('/books/count')
         .expect(200, { count: 11 }, done);
     });
+
+    it('returns the total number of books in the db for a given filter', (done) => {
+      const filter = JSON.stringify({
+        genre: { $in: ['adventure', 'mystery'] },
+        'author.gender': { $in: ['male'] }
+      });
+
+      request(server)
+        .get(`/books/count?filter=${filter}`)
+        .expect(200, { count: 3 }, done);
+    });
   });
 
   describe('/admin/add-books/{count}', () => {

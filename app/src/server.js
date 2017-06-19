@@ -36,7 +36,9 @@ const createServer = (db) => {
   });
 
   app.get('/books/count', (request, response) => {
-    db.count({}, (error, count) => {
+    const { filter = DEFAULT_FILTER } = request.params;
+
+    db.count(JSON.parse(filter), (error, count) => {
       if (error) {
         response.send(500);
       } else {
