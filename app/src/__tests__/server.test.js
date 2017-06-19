@@ -59,8 +59,8 @@ describe('the server', () => {
 
       request(server)
         .get(`/books?itemsPerPage=${itemsPerPage}&page=${page}`)
-        .expect((response) => expect(response.body.itemsPerPage).to.equal(String(itemsPerPage)))
-        .expect((response) => expect(response.body.page).to.equal(String(page)))
+        .expect((response) => expect(response.body.itemsPerPage).to.equal(itemsPerPage))
+        .expect((response) => expect(response.body.page).to.equal(page))
         .expect(200, done);
     });
 

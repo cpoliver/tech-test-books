@@ -7,25 +7,35 @@ const DEFAULT_PAGE = 1;
 const DEFAULT_FILTER = JSON.stringify({});
 const DEFAULT_SORT = JSON.stringify({ title: 1 });
 
-const createServer = (db) => {
+const parseParams = ({ params }) => {
+  const {
+    itemsPerPage = DEFAULT_ITEMS_PER_PAGE,
+    page = DEFAULT_PAGE,
+    filter = DEFAULT_FILTER,
+    sort = DEFAULT_SORT
+  } = params;
+
+  return {
+    itemsPerPage: parseInt(itemsPerPage, 10),
+    page: parseInt(page, 10),
+    filter: JSON.parse(filter),
+    sort: JSON.parse(sort)
+  };
+};
+
+export const createServer = (db) => {
   const app = restify.createServer();
 
   app.use(restify.queryParser());
 
   app.get('/books', (request, response) => {
-    const {
-      itemsPerPage = DEFAULT_ITEMS_PER_PAGE,
-      page = DEFAULT_PAGE,
-      filter = DEFAULT_FILTER,
-      sort = DEFAULT_SORT
-    } = request.params;
-
+    const { itemsPerPage, page, filter, sort } = parseParams(request);
     const skip = (page - 1) * itemsPerPage;
 
-    db.find(JSON.parse(filter))
-      .sort(JSON.parse(sort))
-      .skip(parseInt(skip, 10))
-      .limit(parseInt(itemsPerPage, 10))
+    db.find(filter)
+      .sort(sort)
+      .skip(skip)
+      .limit(itemsPerPage)
       .exec((error, books) => {
         if (error) {
           response.send(500);
@@ -76,5 +86,3 @@ const createServer = (db) => {
 
   return app;
 };
-
-export { createServer };
