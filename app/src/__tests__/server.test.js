@@ -28,10 +28,10 @@ describe('the server', () => {
         .get('/books')
         .expect((response) => expect(
           pipe(
-            prop('body'),
+            prop('books'),
             intersection(books),
             length
-          )(response)).to.equal(10)
+          )(response.body)).to.equal(10)
         )
         .expect(200, done);
     });
@@ -42,26 +42,37 @@ describe('the server', () => {
       const expected = 3;
 
       request(server)
-        .get(`/books?count=${count}&page=${page}`)
+        .get(`/books?itemsPerPage=${count}&page=${page}`)
         .expect((response) => expect(
           pipe(
-            prop('body'),
+            prop('books'),
             intersection(books),
             length
-          )(response)).to.equal(expected)
+          )(response.body)).to.equal(expected)
         )
         .expect(200, done);
     });
 
-    it.skip('errors when the pagination count parameter is invalid', (done) => {
+    it('returns the pagination information', (done) => {
+      const itemsPerPage = 11;
+      const page = 1;
+
       request(server)
-        .get('/books?count=x&page=1')
-        .expect(400, { message: 'invalid parameter: count' }, done);
+        .get(`/books?itemsPerPage=${itemsPerPage}&page=${page}`)
+        .expect((response) => expect(response.body.itemsPerPage).to.equal(String(itemsPerPage)))
+        .expect((response) => expect(response.body.page).to.equal(String(page)))
+        .expect(200, done);
+    });
+
+    it.skip('errors when the pagination itemsPerPage parameter is invalid', (done) => {
+      request(server)
+        .get('/books?itemsPerPage=x&page=1')
+        .expect(400, { message: 'invalid parameter: itemsPerPage' }, done);
     });
 
     it.skip('errors when the pagination page parameter is invalid', (done) => {
       request(server)
-        .get('/books?count=10&page=x')
+        .get('/books?itemsPerPage=10&page=x')
         .expect(400, { message: 'invalid parameter: page' }, done);
     });
 
@@ -75,17 +86,17 @@ describe('the server', () => {
         .get(`/books?filter=${filter}`)
         .expect((response) => expect(
           pipe(
-            prop('body'),
+            prop('books'),
             intersection(books),
             length
-          )(response)).to.equal(3)
+          )(response.body)).to.equal(3)
         )
         .expect(200, done);
     });
 
     it.skip('errors when the filter parameter is invalid', (done) => {
       request(server)
-        .get('/books?count=10&filter=x')
+        .get('/books?itemsPerPage=10&filter=x')
         .expect(400, { message: 'invalid parameter: filter' }, done);
     });
 
@@ -99,13 +110,13 @@ describe('the server', () => {
       ].join(',');
 
       request(server)
-        .get(`/books?sort=${sort}&page=1&count=3`)
+        .get(`/books?sort=${sort}&page=1&itemsPerPage=3`)
         .expect((response) => expect(
           pipe(
-            prop('body'),
+            prop('books'),
             pluck('title'),
             join(',')
-          )(response)).to.equal(expected)
+          )(response.body)).to.equal(expected)
         )
         .expect(200, done);
     });

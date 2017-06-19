@@ -14,23 +14,23 @@ const createServer = (db) => {
 
   app.get('/books', (request, response) => {
     const {
-      count = DEFAULT_ITEMS_PER_PAGE,
+      itemsPerPage = DEFAULT_ITEMS_PER_PAGE,
       page = DEFAULT_PAGE,
       filter = DEFAULT_FILTER,
       sort = DEFAULT_SORT
     } = request.params;
 
-    const skip = (page - 1) * count;
+    const skip = (page - 1) * itemsPerPage;
 
     db.find(JSON.parse(filter))
       .sort(JSON.parse(sort))
       .skip(skip)
-      .limit(count)
+      .limit(itemsPerPage)
       .exec((error, books) => {
         if (error) {
           response.send(500);
         } else {
-          response.send(200, books);
+          response.send(200, { books, page, itemsPerPage });
         }
       });
   });
