@@ -2,7 +2,7 @@
 import request from 'supertest';
 import { beforeEach, describe, it } from 'mocha';
 import { expect } from 'chai';
-import { intersection, join, length, pipe, pluck, prop } from 'ramda';
+import { intersection, join, length, pipe, pluck } from 'ramda';
 
 import books from '../../src/data/example-books.json';
 import { createDb } from '../../src/lib/db';
@@ -16,13 +16,11 @@ const errorFn = () => {
 };
 
 const matchingItemsCount = pipe(
-  prop('books'),
   intersection(books),
   length
 );
 
 const getTitles = pipe(
-  prop('books'),
   pluck('title'),
   join(',')
 );
@@ -50,17 +48,6 @@ describe('the server', () => {
       request(server)
         .get(`/books?itemsPerPage=${count}&page=${page}`)
         .expect((response) => expect(matchingItemsCount(response.body)).to.equal(expected))
-        .expect(200, done);
-    });
-
-    it('returns the pagination information', (done) => {
-      const itemsPerPage = 11;
-      const page = 1;
-
-      request(server)
-        .get(`/books?itemsPerPage=${itemsPerPage}&page=${page}`)
-        .expect((response) => expect(response.body.itemsPerPage).to.equal(itemsPerPage))
-        .expect((response) => expect(response.body.page).to.equal(page))
         .expect(200, done);
     });
 

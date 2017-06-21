@@ -41,7 +41,7 @@ export const createServer = (db) => {
         if (error) {
           response.send(500);
         } else {
-          response.send(200, { books, page, itemsPerPage });
+          response.send(200, books);
         }
       });
   });
