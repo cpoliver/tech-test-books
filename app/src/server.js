@@ -27,7 +27,7 @@ export const createServer = (db) => {
   const server = restify.createServer();
 
   server.use(restify.queryParser());
-  server.use(restify.CORS({ origins: ['http://localhost:3000'] })); // eslint-disable-line new-cap
+  server.use(restify.CORS({ origins: ['*'] })); // eslint-disable-line new-cap
 
   server.get('/books', (request, response) => {
     const { itemsPerPage, page, filter, sort } = parseParams(request);
