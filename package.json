@@ -6,6 +6,9 @@
   "repository": "https://github.com/cpoliver/tech-test-books.git",
   "author": "Charles P. Oliver <cpoliver@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "8.1.0"
+  },
   "scripts": {
     "build": "./node_modules/.bin/babel app --out-dir dist --ignore test.js --copy-files",
     "start": "node ./dist/index.js",
