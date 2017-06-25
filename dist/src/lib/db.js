@@ -11,7 +11,7 @@ var _nedb2 = _interopRequireDefault(_nedb);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DEFAULT_FILE_NAME = '../data/nedb.json';
+var DEFAULT_FILE_NAME = './app/src/data/nedb.json';
 
 var createDb = exports.createDb = function createDb() {
   var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
