@@ -1,0 +1,113 @@
+[
+  {
+    "_id": "3m1pamnmk38Auqb0",
+    "author": {
+      "firstName": "Olivia",
+      "gender": "female",
+      "surname": "Webb"
+    },
+    "genre": "mystery",
+    "publishedOn": "1947-04-30",
+    "title": "Pilots of the Galaxy"
+  }, {
+    "_id": "6LWjS24sPCaHltxZ",
+    "author": {
+      "firstName": "Landon",
+      "gender": "male",
+      "surname": "Murphy"
+    },
+    "genre": "adventure",
+    "publishedOn": "1998-06-29",
+    "title": "Remember the Mines"
+  }, {
+    "_id": "B0GV500zrm20NIY0",
+    "author": {
+      "firstName": "Daniel",
+      "gender": "male",
+      "surname": "Evans"
+    },
+    "genre": "mystery",
+    "publishedOn": "1947-07-18",
+    "title": "Moral of the Maze"
+  }, {
+    "_id": "DZWmeCAjzScwj5vl",
+    "author": {
+      "firstName": "Leah",
+      "gender": "female",
+      "surname": "Miller"
+    },
+    "genre": "humor",
+    "publishedOn": "1990-01-25",
+    "title": "Pleased by Her Laugh"
+  }, {
+    "_id": "GYrxnUWhKFerF4WJ",
+    "author": {
+      "firstName": "Sophia",
+      "gender": "female",
+      "surname": "Cox"
+    },
+    "genre": "sci-fi",
+    "publishedOn": "1971-12-19",
+    "title": "Hunters and Veterans"
+  }, {
+    "_id": "JLmTtAI2bIQ1XMAo",
+    "author": {
+      "firstName": "Noah",
+      "gender": "male",
+      "surname": "Watson"
+    },
+    "genre": "humor",
+    "publishedOn": "1994-09-11",
+    "title": "Electricity Delusion"
+  }, {
+    "_id": "MmIe1puI7L0WnN7O",
+    "author": {
+      "firstName": "Kaylee",
+      "gender": "female",
+      "surname": "Mills"
+    },
+    "genre": "drama",
+    "publishedOn": "1964-08-05",
+    "title": "Hiding the South"
+  }, {
+    "_id": "TkVtXtTfTJCsJg2H",
+    "author": {
+      "firstName": "Isaac",
+      "gender": "male",
+      "surname": "Young"
+    },
+    "genre": "mystery",
+    "publishedOn": "1980-05-07",
+    "title": "Price of the Dungeon"
+  }, {
+    "_id": "V0kMwtRemZQ3H84b",
+    "author": {
+      "firstName": "Gabriel",
+      "gender": "male",
+      "surname": "Mills"
+    },
+    "genre": "horror",
+    "publishedOn": "1991-07-26",
+    "title": "Books at the Hospital"
+  }, {
+    "_id": "cLHjUKExzXDlGDYu",
+    "author": {
+      "firstName": "Leah",
+      "gender": "female",
+      "surname": "Jenkins"
+    },
+    "genre": "mystery",
+    "publishedOn": "1944-06-09",
+    "title": "Parable of Animals"
+  }, {
+    "_id": "cLHjUKsdMwtRGDYu",
+    "author": {
+      "firstName": "Ashley",
+      "gender": "non-binary",
+      "surname": "Williams"
+    },
+    "genre": "non-fiction",
+    "publishedOn": "1994-11-04",
+    "title": "Incredible Places"
+  }
+]
