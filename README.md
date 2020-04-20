@@ -1,5 +1,8 @@
 # Technical Test: Books API
 
+You probably want to check out the [UI code](https://github.com/cpoliver/tech-test-books-ui), and [deployed app](https://cpoliver.github.io/tech-test-books-ui/
+) first. There you'll find much more comprehensive documentation. This was before monorepos were cool, okay?!
+
 ## Purpose
 This is some simple code to generate and serve random book data.
 
